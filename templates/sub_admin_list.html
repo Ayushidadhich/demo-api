@@ -1,0 +1,155 @@
+<body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        
+        <!-- Menu -->
+  
+        {% include 'include/sidebar.html' %}
+        <!-- / Menu -->
+  
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+  
+          {% include 'include/header.html' %}
+  
+          <!-- / Navbar -->
+  
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+          
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"> </span> Sub Admin Managment list</h4>
+              <a href="{% url 'sub_admin_register' %}" style="text-align:right;" class="btn rounded-pill btn-success">Add</a>
+  
+              
+                {% if messages %}
+                {% for message in messages %}
+                {% if message.tags == 'success'%}
+                <div class="alert alert-success">
+                    {{message}}
+                </div>
+                {% elif message.tags == 'error' %}
+                <div class="alert alert-danger">
+                    {{message}}
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+  
+              <!-- Basic Bootstrap Table -->
+              <div class="card">
+  
+                <h5 class="card-header"> Sub Admin</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                              
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <!-- <th>Users</th> -->
+                  <th>Email</th>
+                  <th>Contact</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody class="table-border-bottom-0">
+                {% for i in subadmindata %}
+                
+                <tr>
+                  <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{i.first_name}}</strong></td>
+                  <td>{{i.last_name}}</td>
+                  <td>{{i.email}}</td>
+                  <td>{{i.phone_num}}</td>
+                  <!-- <td>
+                    <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                      <li
+                        data-bs-toggle="tooltip"
+                        data-popup="tooltip-custom"
+                        data-bs-placement="top"
+                        class="avatar avatar-xs pull-up"
+                        title="Lilian Fuller"
+                      >
+                        <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
+                      </li>
+                      <li
+                        data-bs-toggle="tooltip"
+                        data-popup="tooltip-custom"
+                        data-bs-placement="top"
+                        class="avatar avatar-xs pull-up"
+                        title="Sophia Wilkerson"
+                      >
+                        <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
+                      </li>
+                      <li
+                        data-bs-toggle="tooltip"
+                        data-popup="tooltip-custom"
+                        data-bs-placement="top"
+                        class="avatar avatar-xs pull-up"
+                        title="Christina Parker"
+                      >
+                        <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
+                      </li>
+                    </ul>
+                  </td> -->
+                  {% if i.is_active == True %}
+                  <td><span class="badge bg-label-primary me-1">Active</span></td>
+                  {% else %}
+                  <td><span class="badge bg-label-primary me-1">Deactive</span></td>
+                  {% endif %}
+                  <td>
+                    <a href="{% url 'sub_admin_edit' i.slug %}" class="btn rounded-pill btn-success">Edit</a>
+                    <a href="{% url 'sub_admin_delete' i.id %}" class="btn rounded-pill btn-danger">Delete</a>
+                    <a href="{% url 'sub_admin_view' i.slug %}" class="btn rounded-pill btn-success">View</a>
+  
+                    <!-- <div class="dropdown">
+                      <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="javascript:void(0);"
+                          ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                        >
+                        <a class="dropdown-item" href="javascript:void(0);"
+                          ><i class="bx bx-trash me-1"></i> Delete</a
+                        >
+                      </div>
+                    </div> -->
+                  </td>
+                </tr>
+                {% endfor %}
+            
+              </tbody>
+                 
+                  </table>
+                </div>
+              </div>
+              <!--/ Basic Bootstrap Table -->
+           
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+  
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    </div>
+    </div>
+    <!-- / Layout wrapper -->
+  
+  </body>
+  
+  
+    <!-- / Content -->
+  
+    <!-- Footer -->
+   
+    <!-- / Footer -->
+  
+   
+  
